@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const TypingAnimation = () => {
   const [currentText, setCurrentText] = useState("(A/C)");
@@ -11,14 +11,14 @@ const TypingAnimation = () => {
   const [shouldMove, setShouldMove] = useState(false);
   const [showImage, setShowImage] = useState(false);
   
-  const textSteps: string[] = [
+  const textSteps: string[] = useMemo(() => [
     "(A/C)",
     "(AXT)",
     "(AXNT)", 
     "(ACNT)",
     "(ACXNT)",
     "(AXCE/INT)",
-  ];
+  ], []);
 
   useEffect(() => {
     // Text animation timer
@@ -53,7 +53,7 @@ const TypingAnimation = () => {
         clearInterval(numberTimer);
       }
     };
-  }, [currentIndex, currentNumber]);
+  }, [currentIndex, currentNumber, textSteps]);
 
   // Check if both animations are complete
   useEffect(() => {
@@ -123,12 +123,12 @@ const TypingAnimation = () => {
           <p className={`  translate-x-[-155px] mt-4 text-3xl font-extrabold whitespace-nowrap transition-opacity duration-300 ${
           showImage ? 'opacity-100' : 'opacity-0'
         }`}>
-          LED BY AXCEINT PAINE, FUSES DEVELOPMENT AND DESTGN. <br/>
+          LED BY AXCEINT PAINE, FUSES DEVELOPMENT AND DESIGN. <br/>
           WE CREATE BESPOKE WEBSITES FOR E-COMMERCE BRANDS. <br/>
           BRANDS, STUDIOS, ORGANIZATIONS, AND INNOVATORS,<br/>
           PARTNERING CLOSELY WITH CLIENTS<br/>
           TO CRAFT PRODUCTS THAT EMBODY<br/>
-          THEIR BRAND'S ESSENCE.<br/>
+          THEIR BRAND&apos;S ESSENCE.<br/>
           </p>
           
       </div>
